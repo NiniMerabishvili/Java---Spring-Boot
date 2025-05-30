@@ -1,0 +1,17 @@
+.table {
+    display: table;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    border: solid 1px;
+    padding: 5px;
+}
+
+.selected {
+    background-color: green;
+}

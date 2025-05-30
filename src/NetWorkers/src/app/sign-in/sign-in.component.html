@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="onLogin()">
+    <input type="text" placeholder="{{ 'user'}}" formControlName="user">
+    <input type="password" placeholder="{{ 'password'}}" formControlName="password">
+    <button type="submit"> {{'login'}}</button>
+    <button type="submit"> {{'logout'}}</button>
+</form>
+<div *ngIf="loginFailed" style="color: red;">
+    Error: Unauthorized user. Please register first.
+</div>
