@@ -1,0 +1,48 @@
+
+<body>
+<div class ="booking_container">
+    <form [formGroup]="bookingForm" (ngSubmit)="addBooking()">
+        <h2> Book the table </h2>
+        <label for="date">Choose Date</label>
+        <input formControlName="date" placeholder="Date" type="date" [min]="minDate" />
+        <br>
+        <label for="table_name">Choose Table</label>
+        <select id="selectedTable" formControlName="table_name">
+            <option *ngFor="let table of tables" [value]="table.id" [disabled]="isTableBooked(table.id, bookingForm.value.date)">
+              Table {{ table.number }} ({{ table.capacity }} seats, {{table.type}})
+            </option>
+          </select>
+
+        <button [disabled]="!bookingForm.valid" type="submit">Save</button>
+    </form> <br>
+
+    <form [formGroup]="searchForm" (ngSubmit)="searchBookings()">
+        <!-- Other form elements -->
+        <label for="searchDate">Search by Date</label>
+        <input formControlName="searchDate" placeholder="Search by Date" type="date" />
+        <button type="submit">Search</button>
+      </form>
+      
+      
+
+    <div class="my-bookings">
+        <div class="past-bookings">
+            <h2>Past Bookings</h2>
+            <div *ngFor="let booking of pastBookings">
+              {{ booking.date | date:'dd/MM/yyyy' }} & {{ booking.table_name }}
+            </div>
+          </div>
+
+        <div class="future-bookings">
+          <h2>Future Bookings</h2>
+          <div *ngFor="let booking of futureBookings">
+            {{ booking.date | date:'dd/MM/yyyy' }} & {{ booking.table_name }}
+          </div>
+        </div>
+      </div>
+      
+
+    
+</div>
+</body>
+
